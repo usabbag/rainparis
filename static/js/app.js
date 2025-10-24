@@ -1,28 +1,11 @@
 let chart = null;
 let currentArrondissement = null;
 
-// Hide arrondissement grid and show weather
-function showWeather() {
-    document.querySelector('.arrondissement-grid').style.display = 'none';
-    document.querySelector('.cli-section').style.display = 'none';
-    document.querySelector('.footer').style.display = 'none';
-}
-
-// Show arrondissement grid and hide weather
-function resetView() {
-    document.getElementById('content').style.display = 'none';
-    document.querySelector('.arrondissement-grid').style.display = 'grid';
-    document.querySelector('.cli-section').style.display = 'block';
-    document.querySelector('.footer').style.display = 'block';
-    currentArrondissement = null;
-}
-
 // Fetch and display weather data
 async function fetchWeather(arrondissement) {
     const loading = document.getElementById('loading');
     const content = document.getElementById('content');
 
-    showWeather();
     loading.style.display = 'block';
     content.style.display = 'none';
     currentArrondissement = arrondissement;
@@ -171,7 +154,8 @@ function getArrondissementName(num) {
         const name = button.querySelector('.arr-name').textContent;
         return `${number} - ${name}`;
     }
-    return `Arrondissement ${num}`;
+    const postalCode = `750${num.toString().padStart(2, '0')}`;
+    return `${postalCode}`;
 }
 
 // Event listeners
@@ -184,4 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchWeather(arr);
         });
     });
+
+    // Load default weather for arrondissement 1 on page load
+    fetchWeather(1);
 });

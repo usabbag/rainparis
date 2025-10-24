@@ -15,25 +15,9 @@
             <p class="tagline">Minute-by-minute rain forecasts for Paris arrondissements</p>
         </header>
 
-        <!-- Arrondissement Grid -->
-        <div class="arrondissement-grid">
-            {% for num, data in arrondissements.items() %}
-            <button class="arr-button" data-arr="{{ num }}">
-                <span class="arr-number">{{ num }}</span>
-                <span class="arr-name">{{ data.name.split(' - ')[1] if ' - ' in data.name else data.name }}</span>
-            </button>
-            {% endfor %}
-        </div>
-
-        <!-- Loading state -->
-        <div id="loading" class="loading" style="display: none;">Loading forecast...</div>
-
         <!-- Weather Content -->
         <div id="content" style="display: none;">
             <div class="weather-card">
-                <!-- Back button -->
-                <button class="back-button" onclick="resetView()">← Back to arrondissements</button>
-
                 <!-- Location -->
                 <div class="location">
                     <span id="location-name">--</span>
@@ -59,6 +43,19 @@
                 </div>
             </div>
         </div>
+
+        <!-- Arrondissement Grid -->
+        <div class="arrondissement-grid">
+            {% for num, data in arrondissements.items() %}
+            <button class="arr-button" data-arr="{{ num }}">
+                <span class="arr-number">750{{ '%02d' % num }}</span>
+                <span class="arr-name">{{ data.name.split(' - ')[1] if ' - ' in data.name else data.name }}</span>
+            </button>
+            {% endfor %}
+        </div>
+
+        <!-- Loading state -->
+        <div id="loading" class="loading" style="display: none;">Loading forecast...</div>
 
         <!-- CLI Section -->
         <div class="cli-section">

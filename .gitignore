@@ -1,5 +1,6 @@
 # Environment variables
 .env
+/CLAUDE.md
 
 # Python
 __pycache__/
@@ -62,3 +63,5 @@ app.py
 
 # Streamlit
 .streamlit/
+
+/python_api.md
