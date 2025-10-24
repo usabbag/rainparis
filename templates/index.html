@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Paris - Minute-by-Minute Rain Forecasts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <h1>Rain Paris</h1>
+            <p class="tagline">Minute-by-minute rain forecasts for Paris arrondissements</p>
+        </header>
+
+        <!-- Arrondissement Grid -->
+        <div class="arrondissement-grid">
+            {% for num, data in arrondissements.items() %}
+            <button class="arr-button" data-arr="{{ num }}">
+                <span class="arr-number">{{ num }}</span>
+                <span class="arr-name">{{ data.name.split(' - ')[1] if ' - ' in data.name else data.name }}</span>
+            </button>
+            {% endfor %}
+        </div>
+
+        <!-- Loading state -->
+        <div id="loading" class="loading" style="display: none;">Loading forecast...</div>
+
+        <!-- Weather Content -->
+        <div id="content" style="display: none;">
+            <div class="weather-card">
+                <!-- Back button -->
+                <button class="back-button" onclick="resetView()">← Back to arrondissements</button>
+
+                <!-- Location -->
+                <div class="location">
+                    <span id="location-name">--</span>
+                </div>
+
+                <!-- Temperature and status -->
+                <div class="current-conditions">
+                    <div class="temperature">
+                        <span id="temp-value">--</span>
+                        <span class="temp-unit">°</span>
+                    </div>
+                    <div id="rain-summary" class="summary"></div>
+                </div>
+
+                <!-- Precipitation chart -->
+                <div class="chart-container">
+                    <canvas id="precipitation-chart"></canvas>
+                </div>
+
+                <!-- Last updated -->
+                <div class="updated">
+                    <span id="last-updated">Updated just now</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CLI Section -->
+        <div class="cli-section">
+            <h2>Command Line Interface</h2>
+            <p>Check rain forecasts instantly from your terminal</p>
+
+            <div class="cli-install">
+                <div class="cli-step">
+                    <h3>1. Clone & Install</h3>
+                    <code>git clone https://github.com/yourusername/rainparis.git
+cd rainparis
+pip install -r requirements.txt</code>
+                </div>
+
+                <div class="cli-step">
+                    <h3>2. Add API Key</h3>
+                    <code>echo "TOMORROW_API_KEY=your_key" > .env</code>
+                    <p class="cli-note">Get your free API key at <a href="https://www.tomorrow.io" target="_blank">tomorrow.io</a></p>
+                </div>
+
+                <div class="cli-step">
+                    <h3>3. Run</h3>
+                    <code>./rainparis 11</code>
+                    <p class="cli-note">Or install globally: <code>pip install -e .</code></p>
+                </div>
+            </div>
+
+            <div class="cli-examples">
+                <h3>Examples</h3>
+                <div class="example-grid">
+                    <div class="example">
+                        <code>rainparis 2</code>
+                        <span>Quick check for 2nd arrondissement</span>
+                    </div>
+                    <div class="example">
+                        <code>rainparis 11 -v</code>
+                        <span>Detailed minute-by-minute forecast</span>
+                    </div>
+                    <div class="example">
+                        <code>rainparis --list</code>
+                        <span>Show all arrondissements</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made for Paris • <a href="https://github.com/yourusername/rainparis" target="_blank">Open Source</a></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
