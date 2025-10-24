@@ -4,6 +4,11 @@ Data source: OpenDataSoft Paris open data
 """
 
 ARRONDISSEMENTS = {
+    0: {
+        "name": "Paris",
+        "lat": 48.8566,
+        "lon": 2.3522
+    },
     1: {
         "name": "1er - Louvre",
         "lat": 48.8625627018,
@@ -108,7 +113,7 @@ ARRONDISSEMENTS = {
 
 
 def get_arrondissement(number):
-    """Get arrondissement data by number (1-20)"""
+    """Get arrondissement data by number (0 for Paris overall, 1-20 for specific arrondissements)"""
     return ARRONDISSEMENTS.get(number)
 
 
@@ -121,7 +126,7 @@ def get_all_arrondissements():
 
 
 def get_coordinates(number):
-    """Get (lat, lon) tuple for an arrondissement"""
+    """Get (lat, lon) tuple for an arrondissement (0 for Paris overall, 1-20 for specific)"""
     arr = get_arrondissement(number)
     if arr:
         return (arr["lat"], arr["lon"])
@@ -132,6 +137,9 @@ if __name__ == "__main__":
     # Test the data
     print("Paris Arrondissements Center Coordinates")
     print("=" * 60)
-    for num in range(1, 21):
+    for num in range(0, 21):
         arr = get_arrondissement(num)
-        print(f"{num:2d}. {arr['name']:30s} ({arr['lat']:.6f}, {arr['lon']:.6f})")
+        if num == 0:
+            print(f" 0. {arr['name']:30s} ({arr['lat']:.6f}, {arr['lon']:.6f}) [Overall]")
+        else:
+            print(f"{num:2d}. {arr['name']:30s} ({arr['lat']:.6f}, {arr['lon']:.6f})")

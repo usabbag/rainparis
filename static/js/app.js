@@ -54,8 +54,8 @@ function updateChart(chartData) {
 
     // Create gradient
     const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-    gradient.addColorStop(0, 'rgba(0, 102, 255, 0.2)');
-    gradient.addColorStop(1, 'rgba(0, 102, 255, 0.0)');
+    gradient.addColorStop(0, 'rgba(96, 165, 250, 0.3)');
+    gradient.addColorStop(1, 'rgba(96, 165, 250, 0.0)');
 
     // Create new chart
     chart = new Chart(ctx, {
@@ -65,14 +65,14 @@ function updateChart(chartData) {
             datasets: [{
                 label: 'Precipitation',
                 data: precipitation,
-                borderColor: '#0066ff',
+                borderColor: '#60a5fa',
                 backgroundColor: gradient,
                 borderWidth: 2,
                 fill: true,
                 tension: 0.4,
                 pointRadius: 0,
                 pointHoverRadius: 4,
-                pointHoverBackgroundColor: '#0066ff',
+                pointHoverBackgroundColor: '#60a5fa',
                 pointHoverBorderColor: 'white',
                 pointHoverBorderWidth: 2,
             }]
@@ -85,7 +85,7 @@ function updateChart(chartData) {
                     display: false
                 },
                 tooltip: {
-                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    backgroundColor: 'rgba(0, 0, 0, 0.9)',
                     padding: 12,
                     cornerRadius: 8,
                     titleFont: {
@@ -96,6 +96,10 @@ function updateChart(chartData) {
                         size: 14,
                         weight: '600'
                     },
+                    titleColor: '#8b9dc3',
+                    bodyColor: '#ffffff',
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                    borderWidth: 1,
                     displayColors: false,
                     callbacks: {
                         label: function(context) {
@@ -114,7 +118,7 @@ function updateChart(chartData) {
                         maxRotation: 0,
                         autoSkip: true,
                         maxTicksLimit: 6,
-                        color: '#999',
+                        color: '#6b7f9f',
                         font: {
                             size: 12
                         }
@@ -124,11 +128,11 @@ function updateChart(chartData) {
                     display: true,
                     beginAtZero: true,
                     grid: {
-                        color: 'rgba(0, 0, 0, 0.05)',
+                        color: 'rgba(255, 255, 255, 0.1)',
                         drawBorder: false
                     },
                     ticks: {
-                        color: '#999',
+                        color: '#6b7f9f',
                         font: {
                             size: 12
                         },
@@ -152,9 +156,12 @@ function getArrondissementName(num) {
     if (button) {
         const number = button.querySelector('.arr-number').textContent;
         const name = button.querySelector('.arr-name').textContent;
+        if (num == 0) {
+            return `${number} - ${name}`;
+        }
         return `${number} - ${name}`;
     }
-    const postalCode = `750${num.toString().padStart(2, '0')}`;
+    const postalCode = num == 0 ? '75000' : `750${num.toString().padStart(2, '0')}`;
     return `${postalCode}`;
 }
 
@@ -169,6 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Load default weather for arrondissement 1 on page load
-    fetchWeather(1);
+    // Load default weather for Paris overall on page load
+    fetchWeather(0);
 });

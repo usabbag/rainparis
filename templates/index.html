@@ -47,10 +47,17 @@
         <!-- Arrondissement Grid -->
         <div class="arrondissement-grid">
             {% for num, data in arrondissements.items() %}
+            {% if num == 0 %}
+            <button class="arr-button arr-button-paris" data-arr="{{ num }}">
+                <span class="arr-number">75000</span>
+                <span class="arr-name">{{ data.name }}</span>
+            </button>
+            {% else %}
             <button class="arr-button" data-arr="{{ num }}">
                 <span class="arr-number">750{{ '%02d' % num }}</span>
                 <span class="arr-name">{{ data.name.split(' - ')[1] if ' - ' in data.name else data.name }}</span>
             </button>
+            {% endif %}
             {% endfor %}
         </div>
 

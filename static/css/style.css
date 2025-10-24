@@ -7,10 +7,10 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-    background: #ffffff;
+    background: #011232;
     min-height: 100vh;
     padding: 20px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .container {
@@ -41,13 +41,13 @@ body {
     font-size: 3.5rem;
     font-weight: 300;
     margin-bottom: 12px;
-    color: #000000;
+    color: #ffffff;
     letter-spacing: -0.04em;
 }
 
 .tagline {
     font-size: 1.1rem;
-    color: #666666;
+    color: #8b9dc3;
     font-weight: 400;
 }
 
@@ -59,9 +59,20 @@ body {
     margin-bottom: 64px;
 }
 
+.arr-button-paris {
+    grid-column: 1 / -1;
+    background: rgba(96, 165, 250, 0.1) !important;
+    border: 1px solid rgba(96, 165, 250, 0.3) !important;
+}
+
+.arr-button-paris:hover {
+    background: rgba(96, 165, 250, 0.2) !important;
+    border-color: #60a5fa !important;
+}
+
 .arr-button {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 20px 16px;
     cursor: pointer;
@@ -74,10 +85,10 @@ body {
 }
 
 .arr-button:hover {
-    border-color: #0066ff;
-    background: #f8f9ff;
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .arr-button:active {
@@ -87,12 +98,12 @@ body {
 .arr-number {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #0066ff;
+    color: #60a5fa;
 }
 
 .arr-name {
     font-size: 0.75rem;
-    color: #666666;
+    color: #8b9dc3;
     text-align: center;
     line-height: 1.3;
 }
@@ -101,14 +112,14 @@ body {
 .loading {
     text-align: center;
     padding: 60px 0;
-    color: #999;
+    color: #8b9dc3;
     font-size: 1rem;
 }
 
 /* Weather Card */
 .weather-card {
-    background: #fafafa;
-    border: 1px solid #e0e0e0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 48px;
     margin-bottom: 64px;
@@ -117,7 +128,7 @@ body {
 .back-button {
     background: none;
     border: none;
-    color: #0066ff;
+    color: #60a5fa;
     font-size: 0.9rem;
     cursor: pointer;
     padding: 8px 0;
@@ -133,7 +144,7 @@ body {
 .location {
     text-align: center;
     font-size: 1.1rem;
-    color: #666666;
+    color: #8b9dc3;
     margin-bottom: 24px;
     font-weight: 500;
 }
@@ -149,7 +160,7 @@ body {
     font-weight: 200;
     line-height: 1;
     margin-bottom: 16px;
-    color: #000000;
+    color: #ffffff;
     letter-spacing: -0.04em;
 }
 
@@ -161,14 +172,14 @@ body {
 
 .summary {
     font-size: 1.25rem;
-    color: #666666;
+    color: #8b9dc3;
     font-weight: 400;
     letter-spacing: -0.01em;
 }
 
 .updated {
     text-align: center;
-    color: #999999;
+    color: #6b7f9f;
     font-size: 0.875rem;
     margin-top: 24px;
 }
@@ -188,9 +199,10 @@ body {
 .cli-section {
     margin: 80px 0;
     padding: 48px;
-    background: #000000;
+    background: rgba(0, 0, 0, 0.3);
     color: #ffffff;
     border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cli-section h2 {
@@ -201,7 +213,7 @@ body {
 }
 
 .cli-section > p {
-    color: #999999;
+    color: #8b9dc3;
     margin-bottom: 40px;
 }
 
@@ -214,31 +226,31 @@ body {
 .cli-step h3 {
     font-size: 1rem;
     font-weight: 600;
-    color: #0066ff;
+    color: #60a5fa;
     margin-bottom: 12px;
 }
 
 .cli-step code {
     display: block;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.5);
     padding: 16px;
     border-radius: 8px;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 0.875rem;
     line-height: 1.6;
-    color: #00ff88;
+    color: #34d399;
     white-space: pre-wrap;
-    border: 1px solid #333333;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cli-note {
     margin-top: 8px;
     font-size: 0.875rem;
-    color: #999999;
+    color: #8b9dc3;
 }
 
 .cli-note a {
-    color: #0066ff;
+    color: #60a5fa;
     text-decoration: none;
 }
 
@@ -248,11 +260,11 @@ body {
 
 .cli-note code {
     display: inline;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.5);
     padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.85em;
-    border: 1px solid #333333;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cli-examples h3 {
@@ -271,38 +283,38 @@ body {
     align-items: center;
     gap: 16px;
     padding: 12px;
-    background: #1a1a1a;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    border: 1px solid #333333;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .example code {
-    background: #000000;
+    background: rgba(0, 0, 0, 0.7);
     padding: 6px 12px;
     border-radius: 6px;
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 0.875rem;
-    color: #0066ff;
-    border: 1px solid #333333;
+    color: #60a5fa;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     white-space: nowrap;
 }
 
 .example span {
-    color: #999999;
+    color: #8b9dc3;
     font-size: 0.875rem;
 }
 
 /* Footer */
 .footer {
     text-align: center;
-    color: #999999;
+    color: #6b7f9f;
     font-size: 0.875rem;
     padding: 40px 0;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer a {
-    color: #0066ff;
+    color: #60a5fa;
     text-decoration: none;
 }
 
