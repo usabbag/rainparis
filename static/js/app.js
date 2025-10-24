@@ -21,6 +21,7 @@ async function fetchWeather(arrondissement) {
         // Update UI
         document.getElementById('location-name').textContent = getArrondissementName(arrondissement);
         document.getElementById('temp-value').textContent = Math.round(data.temperature);
+        document.getElementById('feels-like-value').textContent = Math.round(data.feels_like);
         document.getElementById('rain-summary').textContent = data.summary;
 
         // Update chart
@@ -37,6 +38,15 @@ async function fetchWeather(arrondissement) {
         console.error('Error fetching weather:', error);
         loading.textContent = 'Failed to load weather data';
     }
+}
+
+// Get rain intensity label from mm/h
+function getRainIntensity(mmh) {
+    if (mmh === 0) return 'No rain';
+    if (mmh < 2.5) return 'Light';
+    if (mmh < 7.6) return 'Moderate';
+    if (mmh < 50) return 'Heavy';
+    return 'Very heavy';
 }
 
 // Update precipitation chart
@@ -103,7 +113,9 @@ function updateChart(chartData) {
                     displayColors: false,
                     callbacks: {
                         label: function(context) {
-                            return context.parsed.y.toFixed(2) + ' mm/hr';
+                            const mmh = context.parsed.y;
+                            const intensity = getRainIntensity(mmh);
+                            return `${intensity} (${mmh.toFixed(2)} mm/hr)`;
                         }
                     }
                 }
@@ -127,6 +139,7 @@ function updateChart(chartData) {
                 y: {
                     display: true,
                     beginAtZero: true,
+                    max: 7.5,
                     grid: {
                         color: 'rgba(255, 255, 255, 0.1)',
                         drawBorder: false
@@ -134,10 +147,15 @@ function updateChart(chartData) {
                     ticks: {
                         color: '#6b7f9f',
                         font: {
-                            size: 12
+                            size: 11
                         },
+                        stepSize: 2.5,
                         callback: function(value) {
-                            return value.toFixed(1);
+                            if (value === 0) return 'None';
+                            if (value === 2.5) return 'Light';
+                            if (value === 5.0) return 'Moderate';
+                            if (value === 7.5) return 'Heavy';
+                            return '';
                         }
                     }
                 }

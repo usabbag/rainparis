@@ -107,6 +107,7 @@ def get_weather(arr_number):
 
             return jsonify({
                 'temperature': current_values.get('temperature'),
+                'feels_like': current_values.get('temperatureApparent'),
                 'precipitation': current_values.get('precipitationIntensity', 0),
                 'summary': summary,
                 'chart_data': chart_data

@@ -159,7 +159,7 @@ body {
     font-size: 6rem;
     font-weight: 200;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     color: #ffffff;
     letter-spacing: -0.04em;
 }
@@ -168,6 +168,18 @@ body {
     font-size: 4rem;
     vertical-align: super;
     margin-left: 4px;
+}
+
+.feels-like {
+    font-size: 1rem;
+    color: #6b7f9f;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.feels-like #feels-like-value {
+    color: #8b9dc3;
+    font-weight: 500;
 }
 
 .summary {
